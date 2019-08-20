@@ -1,11 +1,11 @@
 import React from "react";
 
-import categories from "./categories.data";
+import CATEGORIES_DATA from "./categories.data";
 import "./categories.styles.scss";
 
 class Categories extends React.Component {
   state = {
-    categories: categories
+    categories: CATEGORIES_DATA
   };
 
   render() {
