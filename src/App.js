@@ -6,7 +6,7 @@ import { auth } from "./firebase/firebase.utils";
 
 // import Home from "./pages/home/home.component";
 // import Shop from "./pages/shop/shop.component";
-import SignInSignOut from "./pages/signin-signout/signin-signout.component";
+import SignInSignUp from "./pages/signin-signup/signin-signup.component";
 
 class App extends React.Component {
   state = {
@@ -32,7 +32,7 @@ class App extends React.Component {
     console.log(currentUser);
     return (
       <div className="App">
-        <SignInSignOut />
+        <SignInSignUp />
       </div>
     );
   }
