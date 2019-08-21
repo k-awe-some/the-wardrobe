@@ -3,13 +3,13 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyBRF_AmJxR5UxcHNOfOpIiJYxzaSoru0Ew",
-  authDomain: "the-wardrobe-db.firebaseapp.com",
-  databaseURL: "https://the-wardrobe-db.firebaseio.com",
-  projectId: "the-wardrobe-db",
+  apiKey: "AIzaSyDqbhAtx6qUfGwxNA1lfsb8UrVsqFcmGtQ",
+  authDomain: "the-wardrobe-database.firebaseapp.com",
+  databaseURL: "https://the-wardrobe-database.firebaseio.com",
+  projectId: "the-wardrobe-database",
   storageBucket: "",
-  messagingSenderId: "757364054158",
-  appId: "1:757364054158:web:b7742eac277328fc"
+  messagingSenderId: "293629540839",
+  appId: "1:293629540839:web:cf1c31093d5e18c8"
 };
 
 firebase.initializeApp(config);
