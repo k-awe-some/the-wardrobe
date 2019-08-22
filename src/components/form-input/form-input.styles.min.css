@@ -1,1 +1,1 @@
-.input{width:100%;font-size:1.6rem;margin-bottom:1.6rem;display:flex;flex-direction:column;align-items:flex-start}.input__field{width:70%;height:2.4rem}
+.input{width:100%;font-size:1.6rem;margin-bottom:1.6rem;display:flex;flex-direction:column;align-items:flex-start}.input__field{width:35rem;height:3rem;border:0.5px solid #808080}.input__field:focus{outline:1px solid #cdc098;border:0.5px solid #cdc098}
