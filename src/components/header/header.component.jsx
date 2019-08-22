@@ -1,25 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./header.styles.scss";
 
 import { auth } from "../../firebase/firebase.utils";
 
+const activeStyle = {
+  color: "#968B65"
+};
+
 const Header = ({ currentUser }) => (
   <div className="header">
-    <Link to="/" className="header__item">
+    <NavLink exact to="/" className="header__item" activeStyle={activeStyle}>
       HOME
-    </Link>
-    <Link to="/shop" className="header__item">
+    </NavLink>
+    <NavLink to="/shop" className="header__item" activeStyle={activeStyle}>
       SHOP
-    </Link>
-    <Link to="/contact" className="header__item">
+    </NavLink>
+    <NavLink to="/contact" className="header__item" activeStyle={activeStyle}>
       CONTACT
-    </Link>
-    <div className="header__item">
+    </NavLink>
+
+    <div className="header__item header__item--button-style">
       {currentUser ? (
         <div onClick={() => auth.signOut()}>SIGN OUT</div>
       ) : (
-        <Link to="/signin">SIGN IN</Link>
+        <NavLink to="/signin" activeStyle={activeStyle}>
+          SIGN IN
+        </NavLink>
       )}
     </div>
   </div>

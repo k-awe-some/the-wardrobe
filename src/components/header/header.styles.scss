@@ -8,5 +8,9 @@
 
   &__item {
     margin-left: 2.2rem;
+
+    &--button-style {
+      cursor: pointer;
+    }
   }
 }
