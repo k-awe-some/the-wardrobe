@@ -2,6 +2,7 @@ import React from "react";
 import "./signup.styles.scss";
 
 import FormInput from "../form-input/form-input.component";
+import CustomButton from "../custom-button/custom-button.component";
 
 class SignUp extends React.Component {
   handleSubmit(event) {
@@ -17,7 +18,14 @@ class SignUp extends React.Component {
           <FormInput type="text" name="email" label="Your email" />
           <FormInput type="password" name="password" label="Your password" />
           <FormInput type="password" name="password" label="Confirm password" />
-          <button onClick={this.handleSubmit}>Sign up</button>
+          <CustomButton
+            text="sign up"
+            customStyle={{
+              backgroundColor: "#282828",
+              color: "#fefefe"
+            }}
+            customOnClick={this.handleSubmit}
+          />
         </form>
       </div>
     );
