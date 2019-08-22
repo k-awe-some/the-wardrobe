@@ -1,20 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { auth } from "../../firebase/firebase.utils";
 
 const Header = ({ currentUser }) => (
   <React.Fragment>
     <ul>
-      <li>HOME</li>
+      <Link to="/">HOME</Link>
       <li>SHOP</li>
       <li>CONTACT</li>
-      <li>
+      <Link to="/signin">
         {currentUser ? (
           <div onClick={() => auth.signOut()}>SIGN OUT</div>
         ) : (
           <div>SIGN IN</div>
         )}
-      </li>
+      </Link>
     </ul>
   </React.Fragment>
 );
