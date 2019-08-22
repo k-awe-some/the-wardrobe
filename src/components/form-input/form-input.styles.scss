@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__field {
+    width: 70%;
+    height: 2.4rem;
+  }
+}
