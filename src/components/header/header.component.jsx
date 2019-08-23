@@ -6,6 +6,8 @@ import "./header.styles.scss";
 
 import { auth } from "../../firebase/firebase.utils";
 
+import CartIcon from "../cart-icon/cart-icon.component";
+
 const activeStyle = {
   color: "#968B65"
 };
@@ -30,6 +32,11 @@ const Header = ({ currentUser }) => (
           SIGN IN
         </NavLink>
       )}
+    </div>
+
+    <div className="header__item">
+      {" "}
+      <CartIcon />
     </div>
   </div>
 );

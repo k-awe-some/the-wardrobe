@@ -1,0 +1,7 @@
+svg {
+  cursor: pointer;
+  transition: all 0.2s;
+  &:hover {
+    color: #CDC098;
+  }
+}
