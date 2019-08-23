@@ -4,27 +4,97 @@ import "./signup.styles.scss";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
+import { auth, createUserProfileDoc } from "../../firebase/firebase.utils";
+
 class SignUp extends React.Component {
-  handleSubmit(event) {
+  state = {
+    displayName: "",
+    email: "",
+    password: "",
+    confirmedPassword: ""
+  };
+
+  handleSubmit = async event => {
     event.preventDefault();
-  }
+    const { displayName, email, password, confirmedPassword } = this.state;
+
+    if (password !== confirmedPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserProfileDoc(user, { displayName });
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmedPassword: ""
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
+    const { displayName, email, password, confirmedPassword } = this.state;
     return (
       <div className="signup">
         <h3>I would like to be signed up.</h3>
-        <form className="signup__form">
-          <FormInput type="text" name="name" label="Display name" />
-          <FormInput type="text" name="email" label="Your email" />
-          <FormInput type="password" name="password" label="Your password" />
-          <FormInput type="password" name="password" label="Confirm password" />
+
+        <form className="signup__form" onSubmit={this.handleSubmit}>
+          <FormInput
+            type="text"
+            name="displayName"
+            label="Display name"
+            value={displayName}
+            onChange={this.handleChange}
+            required
+          />
+
+          <FormInput
+            type="email"
+            name="email"
+            label="Your email"
+            value={email}
+            onChange={this.handleChange}
+            required
+          />
+
+          <FormInput
+            type="password"
+            name="password"
+            label="Your password"
+            value={password}
+            onChange={this.handleChange}
+            required
+          />
+
+          <FormInput
+            type="password"
+            name="confirmedPassword"
+            label="Confirm password"
+            value={confirmedPassword}
+            onChange={this.handleChange}
+            required
+          />
+
           <CustomButton
             text="sign up"
+            type="submit"
             customStyle={{
               backgroundColor: "#282828",
               color: "#fefefe"
             }}
-            customOnClick={this.handleSubmit}
           />
         </form>
       </div>
