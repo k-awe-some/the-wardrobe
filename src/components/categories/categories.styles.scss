@@ -30,19 +30,14 @@
     }
 
     button {
-      border-style: none;
-      outline: none;
-      border-radius: 3px;
       background-color: #282828;
-      height: 30%;
-      width: 50%;
-      font-size: 1.8rem;
       color: #fefefe;
       cursor: pointer;
       transition: all 0.2s;
 
       &:hover {
-        background-color: rgba(205, 192, 152, 1);
+        background-color: #CDC098;
+        color: #282828;
       }
     }
   }

@@ -2,6 +2,7 @@ import React from "react";
 
 import CATEGORIES_DATA from "./categories.data";
 import "./categories.styles.scss";
+import CustomButton from "../custom-button/custom-button.component";
 
 class Categories extends React.Component {
   state = {
@@ -22,7 +23,7 @@ class Categories extends React.Component {
           >
             <div className="categories__section--boxed">
               <h3>{section.title.toUpperCase()}</h3>
-              <button className="test">shop now</button>
+              <CustomButton text="shop now" />
             </div>
           </li>
         ))}
