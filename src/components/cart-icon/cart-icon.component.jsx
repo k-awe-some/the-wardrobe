@@ -1,11 +1,19 @@
 import React from "react";
+import { connect } from "react-redux";
 import { FaShoppingCart } from "react-icons/fa";
 import "./cart-icon.styles.scss";
 
-class CartIcon extends React.Component {
-  render() {
-    return <FaShoppingCart size={28} />;
-  }
-}
+import { toggleCartDropdown } from "../../redux/cart/cart.actions";
 
-export default CartIcon;
+const CartIcon = ({ toggleCartDropdown }) => {
+  return <FaShoppingCart size={28} onClick={toggleCartDropdown} />;
+};
+
+const mapDispatchToProps = dispatch => ({
+  toggleCartDropdown: () => dispatch(toggleCartDropdown())
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CartIcon);

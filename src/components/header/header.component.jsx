@@ -7,12 +7,13 @@ import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
 
 import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 const activeStyle = {
   color: "#968B65"
 };
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <NavLink exact to="/" className="header__item" activeStyle={activeStyle}>
       HOME
@@ -38,13 +39,12 @@ const Header = ({ currentUser }) => (
       {" "}
       <CartIcon />
     </div>
+    {hidden === true ? null : <CartDropdown />}
   </div>
 );
 const mapStateToProps = state => ({
-  // with 'state' being 'rootReducer' object
-  currentUser: state.user.currentUser
-  // '.currentUser' as userReducer returns
-  // an object with 'currentUser' prop
+  currentUser: state.user.currentUser,
+  hidden: state.cart.hidden
 });
 
 export default connect(mapStateToProps)(Header);
