@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { NavLink } from "react-router-dom";
 import "./header.styles.scss";
 
@@ -31,5 +33,11 @@ const Header = ({ currentUser }) => (
     </div>
   </div>
 );
+const mapStateToProps = state => ({
+  // with 'state' being 'rootReducer' object
+  currentUser: state.user.currentUser
+  // '.currentUser' as userReducer returns
+  // an object with 'currentUser' prop
+});
 
-export default Header;
+export default connect(mapStateToProps)(Header);
