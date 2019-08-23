@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { connect } from "react-redux";
 // import logo from "./logo.svg";
 import "./App.scss";
@@ -29,10 +34,9 @@ class App extends React.Component {
             }
           })
         );
-      } else {
-        setCurrentUser(userAuth);
-        // at this point pass in the object 'userAuth' for the state to be updated
       }
+      setCurrentUser(userAuth);
+      // at this point pass in the object 'userAuth' for the state to be updated
     });
   }
 
@@ -47,7 +51,13 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/signin" component={SignInSignUp} />
+            <Route
+              exact
+              path="/signin"
+              render={() =>
+                this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
+              }
+            />
           </Switch>
         </div>
       </Router>
@@ -55,15 +65,18 @@ class App extends React.Component {
   }
 }
 
-// map dispatched action to a prop of App's
+// map the 'user.currentUser' slice of state to a prop of App's
+// so App gets that slice & uses it to 'Redirect'
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+// map dispatched 'setCurrentUser' action to a prop of App's
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(App);
-// App does not need mapStateToProps() at this point
-// as it no longer needs to pass currentUser to Header
-// as Header is already getting the 'user' slice of the state
