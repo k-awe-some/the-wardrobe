@@ -8,10 +8,8 @@ const CollectionItem = ({ item }) => (
     <div
       className="preview-item--background"
       style={{ backgroundImage: `url('${item.imageUrl}')` }}
-    >
-      <CustomButton text="add to cart" />
-    </div>
-
+    ></div>
+    <CustomButton text="add to cart" />
     <div className="preview-item--info">
       <span>{item.name}</span>
       <span>${item.price}.00</span>
