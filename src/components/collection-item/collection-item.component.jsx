@@ -12,7 +12,7 @@ const CollectionItem = ({ item, addItem }) => (
       className="preview-item--background"
       style={{ backgroundImage: `url('${item.imageUrl}')` }}
     ></div>
-    <CustomButton text="add to cart" onClick={() => addItem()} />
+    <CustomButton text="add to cart" onClick={() => addItem(item)} />
     <div className="preview-item--info">
       <span>{item.name}</span>
       <span>${item.price}.00</span>
