@@ -1,0 +1,21 @@
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem auto;
+  width: 90%;
+
+  &__image {
+    width: 40%;
+    height: auto;
+  }
+
+  &__details {
+    text-align: left;
+    margin-left: 1rem;
+
+    span:last-child {
+      font-weight: 400;
+    }
+  }
+}

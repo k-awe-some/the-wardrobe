@@ -1,0 +1,1 @@
+.cart-item{display:flex;flex-direction:row;align-items:center;margin:1rem auto;width:90%}.cart-item__image{width:40%;height:auto}.cart-item__details{text-align:left;margin-left:1rem}.cart-item__details span:last-child{font-weight:400}

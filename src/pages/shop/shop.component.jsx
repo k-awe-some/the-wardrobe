@@ -15,7 +15,7 @@ class Shop extends React.Component {
         {collections.map(collection => (
           <div key={collection.id}>
             <CollectionPreview
-              title={collection.title}
+              title={collection.title.toUpperCase()}
               items={collection.items}
             />
           </div>

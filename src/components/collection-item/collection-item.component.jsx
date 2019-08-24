@@ -7,7 +7,7 @@ import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
 
 const CollectionItem = ({ item, addItem }) => (
-  <div className="preview-item" key={item.id}>
+  <div className="preview-item">
     <div
       className="preview-item--background"
       style={{ backgroundImage: `url('${item.imageUrl}')` }}
