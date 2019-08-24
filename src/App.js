@@ -14,7 +14,7 @@ import { setCurrentUser } from "./redux/user/user.actions";
 
 import Header from "./components/header/header.component";
 import Home from "./pages/home/home.component";
-// import Shop from "./pages/shop/shop.component";
+import Shop from "./pages/shop/shop.component";
 import SignInSignUp from "./pages/signin-signup/signin-signup.component";
 
 class App extends React.Component {
@@ -51,6 +51,7 @@ class App extends React.Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/shop" component={Shop} />
             <Route
               exact
               path="/signin"
