@@ -13,6 +13,15 @@
 
   &__info {
     font-size: 2.2rem;
+
+    span {
+      font-size: 3rem;
+      cursor: pointer;
+
+      &:hover {
+        color: #CDC098;
+      }
+    }
   }
 
   &__image {
