@@ -10,7 +10,6 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  // align-items: center;
   z-index: 5;
 
   &__items {
@@ -20,5 +19,10 @@
 
   &__button {
     margin: auto;
+
+    span {
+      color: #968b65;
+      font-weight: 400;
+    }
   }
 }
