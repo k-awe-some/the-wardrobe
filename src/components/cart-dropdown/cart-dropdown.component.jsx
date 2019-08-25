@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
@@ -22,13 +23,15 @@ const CartDropdown = ({ cartItems, cartValueCount }) => (
     </div>
     <div className="cart-dropdown__button">
       <span>Total: ${cartValueCount}</span>
-      <CustomButton
-        text="checkout"
-        customStyle={{
-          backgroundColor: "#282828",
-          color: "#fefefe"
-        }}
-      />
+      <Link to="/checkout">
+        <CustomButton
+          text="checkout"
+          customStyle={{
+            backgroundColor: "#282828",
+            color: "#fefefe"
+          }}
+        />
+      </Link>
     </div>
   </div>
 );

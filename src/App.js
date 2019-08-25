@@ -18,6 +18,7 @@ import Header from "./components/header/header.component";
 import Home from "./pages/home/home.component";
 import Shop from "./pages/shop/shop.component";
 import SignInSignUp from "./pages/signin-signup/signin-signup.component";
+import Checkout from "./pages/checkout/checkout.component";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -59,6 +60,7 @@ class App extends React.Component {
                 this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
               }
             />
+            <Route exact path="/checkout" component={Checkout} />
           </Switch>
         </div>
       </Router>
