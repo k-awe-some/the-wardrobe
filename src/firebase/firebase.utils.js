@@ -3,13 +3,13 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyDqbhAtx6qUfGwxNA1lfsb8UrVsqFcmGtQ",
-  authDomain: "the-wardrobe-database.firebaseapp.com",
-  databaseURL: "https://the-wardrobe-database.firebaseio.com",
-  projectId: "the-wardrobe-database",
+  apiKey: "AIzaSyAgYLyrUGv1r1sq5o3JqaoXKdtwuAYgtXI",
+  authDomain: "the-wardrobe-boutique.firebaseapp.com",
+  databaseURL: "https://the-wardrobe-boutique.firebaseio.com",
+  projectId: "the-wardrobe-boutique",
   storageBucket: "",
-  messagingSenderId: "293629540839",
-  appId: "1:293629540839:web:cf1c31093d5e18c8"
+  messagingSenderId: "12247859322",
+  appId: "1:12247859322:web:e9a2fa75a740171f"
 };
 
 export const createUserProfileDoc = async (userAuth, additionalData) => {

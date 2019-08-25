@@ -28,10 +28,8 @@ class App extends React.Component {
 
         userRef.onSnapshot(snapshot =>
           setCurrentUser({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
+            id: snapshot.id,
+            ...snapshot.data()
           })
         );
       }
