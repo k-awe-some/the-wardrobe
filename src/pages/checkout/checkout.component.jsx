@@ -7,11 +7,13 @@ import "./checkout.styles.scss";
 
 import { selectCartItems } from "../../redux/cart/cart.selectors";
 
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+
 const Checkout = ({ cartItems }) => {
   if (cartItems.length === 0) {
     return (
       <h4 className="checkout__message">
-        Your cart is empty. Fill it with our{" "}
+        Your cart is empty. Fill it up with our{" "}
         <Link to="./shop" style={{ color: "#968B65" }}>
           amazing items
         </Link>
@@ -30,23 +32,7 @@ const Checkout = ({ cartItems }) => {
       </div>
 
       {cartItems.map(cartItem => (
-        <div className="checkout__item" key={cartItem.id}>
-          <div
-            className="checkout__item--image"
-            style={{ backgroundImage: `url(${cartItem.imageUrl})` }}
-          />
-
-          <div className="checkout__item--info">
-            <h3>{cartItem.name}</h3>
-            <p>{cartItem.quantity}</p>
-          </div>
-
-          <div className="checkout__item--price">${cartItem.price}</div>
-
-          <div className="checkout__item--total">
-            ${cartItem.price * cartItem.quantity}
-          </div>
-        </div>
+        <CheckoutItem cartItem={cartItem} key={cartItem.id} />
       ))}
     </div>
   );
