@@ -6,11 +6,13 @@ import {
   Redirect
 } from "react-router-dom";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 // import logo from "./logo.svg";
 import "./App.scss";
 
 import { auth, createUserProfileDoc } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
 import Home from "./pages/home/home.component";
@@ -66,8 +68,8 @@ class App extends React.Component {
 
 // map the 'user.currentUser' slice of state to a prop of App's
 // so App gets that slice & uses it to 'Redirect'
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 });
 
 // map dispatched 'setCurrentUser' action to a prop of App's

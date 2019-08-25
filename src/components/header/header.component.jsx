@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
 import "./header.styles.scss";
 
 import { auth } from "../../firebase/firebase.utils";
@@ -52,12 +53,12 @@ const Header = ({ currentUser, hidden }) => (
       </div>
     </div>
 
-    {hidden === true ? null : <CartDropdown />}
+    {hidden === true ? null : <CartDropdown style={{ position: "sticky" }} />}
   </div>
 );
-const mapStateToProps = state => ({
-  currentUser: selectCurrentUser(state),
-  hidden: selectCartHidden(state)
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden
 });
 
 export default connect(mapStateToProps)(Header);
