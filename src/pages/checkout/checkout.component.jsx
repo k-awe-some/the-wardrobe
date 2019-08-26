@@ -5,11 +5,14 @@ import { createStructuredSelector } from "reselect";
 
 import "./checkout.styles.scss";
 
-import { selectCartItems } from "../../redux/cart/cart.selectors";
+import {
+  selectCartItems,
+  selectCartValueCount
+} from "../../redux/cart/cart.selectors";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
-const Checkout = ({ cartItems }) => {
+const Checkout = ({ cartItems, cartValueCount }) => {
   if (cartItems.length === 0) {
     return (
       <h4 className="checkout__message">
@@ -34,12 +37,17 @@ const Checkout = ({ cartItems }) => {
       {cartItems.map(cartItem => (
         <CheckoutItem cartItem={cartItem} key={cartItem.id} />
       ))}
+
+      <div className="checkout__total">
+        <span>TOTAL: ${cartValueCount}.00</span>
+      </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
+  cartItems: selectCartItems,
+  cartValueCount: selectCartValueCount
 });
 
 export default connect(mapStateToProps)(Checkout);

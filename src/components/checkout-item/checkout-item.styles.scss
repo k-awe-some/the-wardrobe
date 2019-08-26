@@ -1,31 +1,54 @@
 .checkout-item {
+  height: 200px;
   width: 100%;
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #282828;
+  padding-bottom: 2rem;
 
   div {
     width: 25%;
   }
 
   &__info {
-    font-size: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    h3, p {
+      margin: 0;
+    }
 
     span {
-      font-size: 3rem;
+      font-size: 2.5rem;
       cursor: pointer;
 
       &:hover {
         color: #CDC098;
       }
     }
+
+    button {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 1.6rem;
+      margin-left: 1.5rem;
+
+      &:hover {
+        text-decoration: underline;
+        color: #CDC098;
+      }
+    }
   }
 
   &__image {
-    height: 200px;
+    height: 100%;
     background-size: cover;
     background-position: center;
     border-radius: 3px;
