@@ -10,4 +10,5 @@ const Shop = ({ match }) => (
     <Route path={`${match.path}/:collectionId`} component={Collection} />
   </React.Fragment>
 );
+
 export default Shop;
