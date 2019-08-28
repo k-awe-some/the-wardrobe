@@ -3,13 +3,25 @@ import { connect } from "react-redux";
 
 import { selectCollection } from "../../redux/shop/shop.selectors";
 
-// import CollectionItem from "../../components/collection-item/collection-item.component";
+import "./collection.styles.scss";
 
-const Collection = ({ collection }) => (
-  <div>
-    <h2>Collection page</h2>
-  </div>
-);
+import CollectionItem from "../../components/collection-item/collection-item.component";
+
+const Collection = ({ collection }) => {
+  const { title, items } = collection;
+  console.log(title, items);
+  return (
+    <div className="collection">
+      <h3>{title.toUpperCase()}</h3>
+      <div className="collection__items">
+        {items.map(item => (
+          <CollectionItem item={item} key={item.id} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const mapStateToProps = (state, ownProps) => ({
   collection: selectCollection(ownProps.match.params.collectionId)(state)
 });

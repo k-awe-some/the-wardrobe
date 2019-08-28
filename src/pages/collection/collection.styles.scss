@@ -1,10 +1,10 @@
-.preview {
+.collection {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
 
   &__items {
-    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

@@ -7,7 +7,7 @@ import Collection from "../collection/collection.component";
 const Shop = ({ match }) => (
   <React.Fragment>
     <Route exact path={`${match.path}`} component={CollectionOverview} />
-    <Route path={`${match.path}/:collectionId`} component={Collection} />
+    <Route exact path={`${match.path}/:collectionId`} component={Collection} />
   </React.Fragment>
 );
 
