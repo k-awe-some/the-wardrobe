@@ -1,12 +1,12 @@
-# The Wardrobe (work in progress)
+# The Wardrobe
 
 The Wardrobe is an e-commerce store that sells clothing and accessories.
 
 ## Description
 
-Created with **React.js** and hosted on **Firebase**, the current version of this web app manages the state (including _user_, _cart_, _directory_ and _shop data_) using **React-Redux.js**. It also allows online customers to create accounts through the integrated Firebase authentication & database services. [Stripe API](https://stripe.com) is also implemented to handle card payments (which currently can be tested out using the default credit card provided upon checking out).
+Created with **React.js** and hosted on **Firebase**, the current version of this web app manages the state (including _user_, _cart_, _directory_ and _shop data_) using **React-Redux.js**. It also allows online customers to create accounts through the integrated Firebase authentication & database services. **[Stripe API](https://stripe.com)** is also implemented to handle card payments (which currently can be tested out using the default credit card provided upon checking out).
 
-Next improvements will aim for optimizations in state management with React Hooks, as well as in back-end charges through Stripe payments.
+**Future improvements** will aim for **optimizations in state management** with [React Hooks](https://reactjs.org/docs/hooks-intro.html), as well as in **back-end charges** through Stripe payments.
 
 ## Technologies - Frameworks - Libraries
 
@@ -26,4 +26,4 @@ Pull requests are welcome and appreciated. For major changes, please open an iss
 
 ## License
 
-This web app is available under [MIT](https://choosealicense.com/licenses/mit/)
+This web app is available under [MIT](https://choosealicense.com/licenses/mit/).
