@@ -9,7 +9,6 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 
 const Collection = ({ collection }) => {
   const { title, items } = collection;
-  console.log(title, items);
   return (
     <div className="collection">
       <h3>{title.toUpperCase()}</h3>

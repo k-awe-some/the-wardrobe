@@ -3,6 +3,14 @@
   flex-direction: column;
   align-items: flex-start;
 
+  &__title {
+    cursor: pointer;
+
+    &:hover {
+      color: #968B65;
+    }
+  }
+
   &__items {
     width: 100%;
     display: flex;

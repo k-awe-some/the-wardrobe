@@ -33,9 +33,6 @@ const Header = ({ currentUser, hidden }) => (
       <NavLink to="/shop" className="nav__item" activeStyle={activeStyle}>
         SHOP
       </NavLink>
-      <NavLink to="/contact" className="nav__item" activeStyle={activeStyle}>
-        CONTACT
-      </NavLink>
 
       <div className="nav__item nav__item--button-style">
         {currentUser ? (

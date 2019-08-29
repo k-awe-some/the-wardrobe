@@ -13,6 +13,7 @@ const CollectionOverview = ({ collections }) => (
         <CollectionPreview
           title={collection.title.toUpperCase()}
           items={collection.items}
+          routeName={collection.routeName}
         />
       </div>
     ))}
