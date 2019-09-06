@@ -57,7 +57,4 @@ class Shop extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  null
-)(Shop);
+export default connect()(Shop);

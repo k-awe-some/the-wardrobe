@@ -5,15 +5,10 @@ import "./cart-icon.styles.scss";
 
 import { toggleCartDropdown } from "../../redux/cart/cart.actions";
 
-const CartIcon = ({ toggleCartDropdown }) => {
-  return <FaShoppingCart size={28} onClick={toggleCartDropdown} />;
+const CartIcon = ({ dispatch }) => {
+  return (
+    <FaShoppingCart size={28} onClick={() => dispatch(toggleCartDropdown())} />
+  );
 };
 
-const mapDispatchToProps = dispatch => ({
-  toggleCartDropdown: () => dispatch(toggleCartDropdown())
-});
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(CartIcon);
+export default connect()(CartIcon);
