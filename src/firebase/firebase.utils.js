@@ -37,20 +37,20 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd
-) => {
-  const collectionRef = firestore.collection(collectionKey);
-  const batch = firestore.batch();
-
-  objectsToAdd.forEach(object => {
-    const newDocRef = collectionRef.doc(); // generate random ID for each object; pass in object.title to generate ID === title
-    batch.set(newDocRef, object);
-  });
-
-  return await batch.commit(); // returns a promise
-};
+// export const addCollectionAndDocuments = async (
+//   collectionKey,
+//   objectsToAdd
+// ) => {
+//   const collectionRef = firestore.collection(collectionKey);
+//   const batch = firestore.batch();
+//
+//   objectsToAdd.forEach(object => {
+//     const newDocRef = collectionRef.doc();
+//     batch.set(newDocRef, object);
+//   });
+//
+//   return await batch.commit(); // returns a promise
+// };
 
 firebase.initializeApp(config);
 
