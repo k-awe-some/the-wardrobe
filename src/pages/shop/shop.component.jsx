@@ -1,4 +1,5 @@
 import React from "react";
+import { createStructuredSelector } from "reselect";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -6,50 +7,40 @@ import CollectionOverview from "../../components/collection-overview/collection-
 import Collection from "../collection/collection.component";
 import WithSpinner from "../../components/with-spinner/with-spinner.component";
 
-import {
-  firestore,
-  convertCollectionsSnapshotToMap
-} from "../../firebase/firebase.utils";
-
-import { updateCollections } from "../../redux/shop/shop.actions";
+import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
+import { selectIsCollectionFetching } from "../../redux/shop/shop.selectors";
 
 const CollectionOverviewWithSpinner = WithSpinner(CollectionOverview);
 const CollectionWithSpinner = WithSpinner(Collection);
 
 class Shop extends React.Component {
-  state = {
-    isLoading: true
-  };
-  unsubscribeFromSnapshot = null;
-
   componentDidMount() {
     const { dispatch } = this.props;
-    const collectionRef = firestore.collection("collections");
-
-    this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
-      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-      await dispatch(updateCollections(collectionsMap));
-      this.setState({ isLoading: false });
-    });
+    dispatch(fetchCollectionsStartAsync());
   }
 
   render() {
-    const { match } = this.props;
-    const { isLoading } = this.state;
+    const { match, isCollectionFetching } = this.props;
     return (
       <React.Fragment>
         <Route
           exact
           path={`${match.path}`}
           render={props => (
-            <CollectionOverviewWithSpinner isLoading={isLoading} {...props} />
+            <CollectionOverviewWithSpinner
+              isLoading={isCollectionFetching}
+              {...props}
+            />
           )}
         />
         <Route
           exact
           path={`${match.path}/:collectionId`}
           render={props => (
-            <CollectionWithSpinner isLoading={isLoading} {...props} />
+            <CollectionWithSpinner
+              isLoading={isCollectionFetching}
+              {...props}
+            />
           )}
         />
       </React.Fragment>
@@ -57,4 +48,8 @@ class Shop extends React.Component {
   }
 }
 
-export default connect()(Shop);
+const mapStateToProps = createStructuredSelector({
+  isCollectionFetching: selectIsCollectionFetching
+});
+
+export default connect(mapStateToProps)(Shop);
