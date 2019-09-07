@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import CollectionOverviewContainer from "../../components/collection-overview/collection-overview.container";
 import CollectionContainer from "../collection/collection.container";
 
-import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
+import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 
 class Shop extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchCollectionsStartAsync());
+    dispatch(fetchCollectionsStart());
   }
 
   render() {
