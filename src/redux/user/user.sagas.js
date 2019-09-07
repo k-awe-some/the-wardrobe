@@ -1,17 +1,30 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
 
-import {
-  userActionTypes,
-  signInWithGoogleSuccess,
-  signInWithGoogleFailure,
-  signInWithEmailSuccess,
-  signInWithEmailFailure
-} from "./user.actions";
+import { userActionTypes, signInSuccess, signInFailure } from "./user.actions";
 import {
   googleProvider,
   auth,
   createUserProfileDoc
 } from "../../firebase/firebase.utils";
+
+/*** SIGN IN GENERATOR FUNCTION ***/
+function* signIn(user) {
+  try {
+    const userRef = yield call(createUserProfileDoc, user);
+
+    const userSnapshot = yield userRef.get();
+
+    // .put() things back to redux flow
+    yield put(
+      signInSuccess({
+        id: userSnapshot.id,
+        ...userSnapshot.data()
+      })
+    );
+  } catch (error) {
+    yield put(signInFailure(error));
+  }
+}
 
 /*** SIGN IN WITH GOOGLE SAGA ***/
 export function* signInWithGoogleStart() {
@@ -21,19 +34,9 @@ export function* signInWithGoogleStart() {
 function* signInWithGoogleAsync() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
-    const userRef = yield call(createUserProfileDoc, user);
-
-    const userSnapshot = yield userRef.get();
-
-    // .put() things back to redux flow
-    yield put(
-      signInWithGoogleSuccess({
-        id: userSnapshot.id,
-        ...userSnapshot.data()
-      })
-    );
+    yield signIn(user);
   } catch (error) {
-    yield put(signInWithGoogleFailure(error));
+    yield put(signInFailure(error));
   }
 }
 
@@ -45,18 +48,9 @@ export function* signInWithEmailStart() {
 function* signInWithEmailAsync({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
-    const userRef = yield call(createUserProfileDoc, user);
-
-    const userSnapshot = yield userRef.get();
-
-    yield put(
-      signInWithEmailSuccess({
-        id: userSnapshot.id,
-        ...userSnapshot.data()
-      })
-    );
+    yield signIn(user);
   } catch (error) {
-    yield put(signInWithEmailFailure(error));
+    yield put(signInFailure(error));
   }
 }
 

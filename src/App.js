@@ -18,27 +18,23 @@ import Shop from "./pages/shop/shop.component";
 import SignInSignUp from "./pages/signin-signup/signin-signup.component";
 import Checkout from "./pages/checkout/checkout.component";
 
-const App = ({ currentUser }) => {
-  return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/shop" component={Shop} />
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              currentUser ? <Redirect to="/" /> : <SignInSignUp />
-            }
-          />
-          <Route exact path="/checkout" component={Checkout} />
-        </Switch>
-      </div>
-    </Router>
-  );
-};
+const App = ({ currentUser }) => (
+  <Router>
+    <div className="App">
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/shop" component={Shop} />
+        <Route
+          exact
+          path="/signin"
+          render={() => (currentUser ? <Redirect to="/" /> : <SignInSignUp />)}
+        />
+        <Route exact path="/checkout" component={Checkout} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
