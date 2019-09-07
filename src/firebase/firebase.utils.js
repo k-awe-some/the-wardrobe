@@ -37,21 +37,6 @@ export const createUserProfileDoc = async (userAuth, additionalData) => {
   return userRef;
 };
 
-// export const addCollectionAndDocuments = async (
-//   collectionKey,
-//   objectsToAdd
-// ) => {
-//   const collectionRef = firestore.collection(collectionKey);
-//   const batch = firestore.batch();
-//
-//   objectsToAdd.forEach(object => {
-//     const newDocRef = collectionRef.doc();
-//     batch.set(newDocRef, object);
-//   });
-//
-//   return await batch.commit(); // returns a promise
-// };
-
 export const convertCollectionsSnapshotToMap = collectionsSnapshot => {
   const transformedCollection = collectionsSnapshot.docs.map(doc => {
     const { title, items } = doc.data();
@@ -75,10 +60,7 @@ firebase.initializeApp(config);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-// always show Google pop up with list of accounts to choose from
-
-export const signInWithGoogleMethod = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export default firebase;
