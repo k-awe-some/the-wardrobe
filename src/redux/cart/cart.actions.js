@@ -2,7 +2,8 @@ export const cartActionTypes = {
   TOGGLE_CART_DROPDOWN: "TOGGLE_CART_DROPDOWN",
   ADD_ITEM: "ADD_ITEM",
   REMOVE_ITEM: "REMOVE_ITEM",
-  CLEAR_ITEM: "CLEAR_ITEM"
+  CLEAR_ITEM: "CLEAR_ITEM",
+  CLEAR_CART: "CLEAR_CART"
 };
 
 export const toggleCartDropdown = () => ({
@@ -22,4 +23,8 @@ export const removeItem = item => ({
 export const clearItem = item => ({
   type: cartActionTypes.CLEAR_ITEM,
   payload: item
+});
+
+export const clearCart = () => ({
+  type: cartActionTypes.CLEAR_CART
 });
