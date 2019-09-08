@@ -1,18 +1,19 @@
 export const userActionTypes = {
+  // SIGN IN
   GOOGLE_SIGN_IN_START: "GOOGLE_SIGN_IN_START",
   EMAIL_SIGN_IN_START: "EMAIL_SIGN_IN_START",
   SIGN_IN_SUCCESS: "SIGN_IN_SUCCESS",
   SIGN_IN_FAILURE: "SIGN_IN_FAILURE",
   USER_SESSION_START: "USER_SESSION_START",
+  // SIGN OUT
   SIGN_OUT_START: "SIGN_OUT_START",
   SIGN_OUT_SUCCESS: "SIGN_OUT_SUCCESS",
-  SIGN_OUT_FAILURE: "SIGN_OUT_FAILURE"
+  SIGN_OUT_FAILURE: "SIGN_OUT_FAILURE",
+  // SIGN UP
+  SIGN_UP_START: "SIGN_UP_START",
+  SIGN_UP_SUCCESS: "SIGN_UP_SUCCESS",
+  SIGN_UP_FAILURE: "SIGN_UP_FAILURE"
 };
-
-export const setCurrentUser = user => ({
-  type: userActionTypes.SET_CURRENT_USER,
-  payload: user
-});
 
 /*** GOOGLE ***/
 export const signInWithGoogleStart = () => ({
@@ -53,5 +54,21 @@ export const signOutSuccess = () => ({
 
 export const signOutFailure = error => ({
   type: userActionTypes.SIGN_OUT_FAILURE,
+  payload: error
+});
+
+/*** SIGN UP ***/
+export const signUpStart = userCredentials => ({
+  type: userActionTypes.SIGN_UP_START,
+  payload: userCredentials
+});
+
+export const signUpSuccess = user => ({
+  type: userActionTypes.SIGN_UP_SUCCESS,
+  payload: user
+});
+
+export const signUpFailure = error => ({
+  type: userActionTypes.SIGN_UP_FAILURE,
   payload: error
 });

@@ -5,7 +5,9 @@ import {
   signInSuccess,
   signInFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  signUpSuccess,
+  signUpFailure
 } from "./user.actions";
 import {
   googleProvider,
@@ -15,10 +17,9 @@ import {
 } from "../../firebase/firebase.utils";
 
 /*** SIGN IN GENERATOR FUNCTION ***/
-function* signIn(user) {
+function* signIn(user, additionalData) {
   try {
-    const userRef = yield call(createUserProfileDoc, user);
-
+    const userRef = yield call(createUserProfileDoc, user, additionalData);
     const userSnapshot = yield userRef.get();
 
     // .put() things back to redux flow
@@ -90,12 +91,38 @@ export function* signOutStart() {
   yield takeLatest(userActionTypes.SIGN_OUT_START, signOutAsync);
 }
 
+/*** SIGN UP SAGA ***/
+function* signUpAsync({ payload: { displayName, email, password } }) {
+  try {
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
+    yield put(signUpSuccess({ user, additionalData: { displayName } }));
+  } catch (error) {
+    yield put(signUpFailure(error));
+  }
+}
+
+function* signInAfterSignUp({ payload: { user, additionalData } }) {
+  yield signIn(user, additionalData);
+}
+
+function* signUpStart() {
+  yield takeLatest(userActionTypes.SIGN_UP_START, signUpAsync);
+}
+
+// additional saga to sign in after sign up
+function* onSignUpSuccess() {
+  yield takeLatest(userActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
+}
+
 /*** ROOT USER SAGA ***/
 export function* userSagas() {
   yield all([
     call(signInWithGoogleStart),
     call(signInWithEmailStart),
     call(checkUserSessionStart),
-    call(signOutStart)
+    call(signOutStart),
+    call(signUpStart),
+    call(onSignUpSuccess)
   ]);
 }
