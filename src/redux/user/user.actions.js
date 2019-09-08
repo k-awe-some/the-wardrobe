@@ -3,7 +3,10 @@ export const userActionTypes = {
   EMAIL_SIGN_IN_START: "EMAIL_SIGN_IN_START",
   SIGN_IN_SUCCESS: "SIGN_IN_SUCCESS",
   SIGN_IN_FAILURE: "SIGN_IN_FAILURE",
-  USER_SESSION_START: "USER_SESSION_START"
+  USER_SESSION_START: "USER_SESSION_START",
+  SIGN_OUT_START: "SIGN_OUT_START",
+  SIGN_OUT_SUCCESS: "SIGN_OUT_SUCCESS",
+  SIGN_OUT_FAILURE: "SIGN_OUT_FAILURE"
 };
 
 export const setCurrentUser = user => ({
@@ -36,5 +39,19 @@ export const signInSuccess = user => ({
 
 export const signInFailure = error => ({
   type: userActionTypes.SIGN_IN_FAILURE,
+  payload: error
+});
+
+/*** SIGN OUT ***/
+export const signOutStart = () => ({
+  type: userActionTypes.SIGN_OUT_START
+});
+
+export const signOutSuccess = () => ({
+  type: userActionTypes.SIGN_OUT_SUCCESS
+});
+
+export const signOutFailure = error => ({
+  type: userActionTypes.SIGN_OUT_FAILURE,
   payload: error
 });

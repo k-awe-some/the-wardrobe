@@ -7,6 +7,7 @@ import "./header.styles.scss";
 import { auth } from "../../firebase/firebase.utils";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { signOutStart } from "../../redux/user/user.actions";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -15,7 +16,7 @@ const activeStyle = {
   color: "#968B65"
 };
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, dispatch }) => (
   <div className="header">
     <div className="user">
       {currentUser ? (
@@ -36,7 +37,7 @@ const Header = ({ currentUser, hidden }) => (
 
       <div className="nav__item nav__item--button-style">
         {currentUser ? (
-          <div onClick={() => auth.signOut()}>SIGN OUT</div>
+          <div onClick={() => dispatch(signOutStart())}>SIGN OUT</div>
         ) : (
           <NavLink to="/signin" activeStyle={activeStyle}>
             SIGN IN
