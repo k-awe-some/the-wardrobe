@@ -4,7 +4,8 @@ import { userActionTypes, signInSuccess, signInFailure } from "./user.actions";
 import {
   googleProvider,
   auth,
-  createUserProfileDoc
+  createUserProfileDoc,
+  getCurrentUser
 } from "../../firebase/firebase.utils";
 
 /*** SIGN IN GENERATOR FUNCTION ***/
@@ -54,7 +55,26 @@ function* signInWithEmailAsync({ payload: { email, password } }) {
   }
 }
 
+/*** CHECK USER SESSION SAGA ***/
+function* isUserAuthenticated() {
+  try {
+    const userAuth = yield getCurrentUser();
+    if (!userAuth) return;
+    yield signIn(userAuth);
+  } catch (error) {
+    yield put(signInFailure(error));
+  }
+}
+
+export function* checkUserSessionStart() {
+  yield takeLatest(userActionTypes.USER_SESSION_START, isUserAuthenticated);
+}
+
 /*** ROOT USER SAGA ***/
 export function* userSagas() {
-  yield all([call(signInWithGoogleStart), call(signInWithEmailStart)]);
+  yield all([
+    call(signInWithGoogleStart),
+    call(signInWithEmailStart),
+    call(checkUserSessionStart)
+  ]);
 }
