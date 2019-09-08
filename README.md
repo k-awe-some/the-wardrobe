@@ -10,6 +10,7 @@ Created with **React.js** and hosted on **Firebase**, the current version of thi
 
 - [Version 1.0](https://github.com/k-awe-some/the-wardrobe-v1.0)
 - [Version 2.0](https://github.com/k-awe-some/the-wardrobe-v2.0)
+- [Version 3.0](https://github.com/k-awe-some/the-wardrobe-v3.0)
 
 **Future improvements** will aim for **optimizations in state management** with [React Hooks](https://reactjs.org/docs/hooks-intro.html), as well as in **back-end charges** through Stripe payments.
 
@@ -21,6 +22,7 @@ This web app is created with:
 - [React Router DOM](https://reacttraining.com/react-router/) version 5.0.1
 - [React-Redux.js](https://react-redux.js.org) version 7.1.0
 - [Redux Persist](https://github.com/rt2zz/redux-persist) version 5.10.0
+- [Redux Saga](https://redux-saga.js.org) version 1.0.5
 - [Reselect](https://github.com/reduxjs/reselect) version 4.0.0
 - [Firebase](https://firebase.google.com) version 6.4.2
 - [React Stripe Checkout](https://github.com/azmenak/react-stripe-checkout) version 2.6.3
