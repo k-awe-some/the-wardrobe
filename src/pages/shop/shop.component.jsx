@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -7,29 +7,25 @@ import CollectionContainer from "../collection/collection.container";
 
 import { fetchCollectionsStart } from "../../redux/shop/shop.actions";
 
-class Shop extends React.Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
+const Shop = ({ match, dispatch }) => {
+  useState(() => {
     dispatch(fetchCollectionsStart());
-  }
+  }, [dispatch]);
 
-  render() {
-    const { match } = this.props;
-    return (
-      <React.Fragment>
-        <Route
-          exact
-          path={`${match.path}`}
-          component={CollectionOverviewContainer}
-        />
-        <Route
-          exact
-          path={`${match.path}/:collectionId`}
-          component={CollectionContainer}
-        />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Route
+        exact
+        path={`${match.path}`}
+        component={CollectionOverviewContainer}
+      />
+      <Route
+        exact
+        path={`${match.path}/:collectionId`}
+        component={CollectionContainer}
+      />
+    </React.Fragment>
+  );
+};
 
 export default connect()(Shop);
