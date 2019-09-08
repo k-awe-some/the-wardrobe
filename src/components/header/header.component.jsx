@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import "./header.styles.scss";
 
-import { auth } from "../../firebase/firebase.utils";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { signOutStart } from "../../redux/user/user.actions";
@@ -51,7 +50,7 @@ const Header = ({ currentUser, hidden, dispatch }) => (
       </div>
     </div>
 
-    {hidden === true ? null : <CartDropdown style={{ position: "sticky" }} />}
+    {hidden === true ? null : <CartDropdown />}
   </div>
 );
 const mapStateToProps = createStructuredSelector({

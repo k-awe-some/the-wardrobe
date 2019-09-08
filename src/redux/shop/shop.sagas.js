@@ -1,6 +1,4 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-// listens to every action
-// creates non-blocking calls
+import { takeLatest, call, put, all } from "redux-saga/effects";
 
 import {
   firestore,
@@ -33,4 +31,8 @@ export function* fetchCollectionsStart() {
     shopActionTypes.FETCH_COLLECTIONS_START,
     fetchCollectionsAsync
   );
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionsStart)]);
 }
