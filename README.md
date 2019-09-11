@@ -12,7 +12,12 @@ Created with **React.js** and hosted on **Firebase**, the current version of thi
 - [Version 2.0](https://github.com/k-awe-some/the-wardrobe-v2.0)
 - [Version 3.0](https://github.com/k-awe-some/the-wardrobe-v3.0)
 
-**Future improvements** will aim for **optimizations in state management** with [React Hooks](https://reactjs.org/docs/hooks-intro.html), as well as in **back-end charges** through Stripe payments.
+**Improvements** from version 3.0 include:
+
+- Implementation of [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- Code Refactoring
+
+**Next improvements** will aim for **optimizations in state management** with [React's Context API](https://reactjs.org/docs/context.html), as well as **back-end charges** through Stripe payments.
 
 ## Technologies - Frameworks - Libraries
 
